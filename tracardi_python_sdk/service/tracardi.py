@@ -1,11 +1,10 @@
 from typing import Union
 
-from tracardi_python_sdk.errors import AuthenticationError, UnknownError
+from tracardi_python_sdk.errors import UnknownError
 from tracardi_python_sdk.model.credentials import Credentials
 from tracardi_python_sdk.model.entity import Entity
 from tracardi_python_sdk.model.profile import Profile
 from tracardi_python_sdk.model.resource import Resource
-from tracardi_python_sdk.model.token import Token
 from tracardi_python_sdk.model.tracker_payload import TrackerPayload
 from tracardi_python_sdk.service.sync_dispatcher import SyncDispatcher
 

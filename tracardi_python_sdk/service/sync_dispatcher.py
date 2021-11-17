@@ -31,4 +31,3 @@ class SyncDispatcher(Dispatcher):
     def create_resource(self, resource: Resource):
         response = requests.post(f"{self.url}/resource", json=resource.dict(), headers={"Authorization": f"Bearer {self.token.access_token}"})
         return self._response(response)
-

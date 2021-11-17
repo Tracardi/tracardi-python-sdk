@@ -27,7 +27,8 @@ class TrackerPayload(BaseModel):
         data['metadata'] = Metadata(
             time=Time(
                 insert=datetime.utcnow()
-            ))
+            )
+        )
 
         super().__init__(**data)
 

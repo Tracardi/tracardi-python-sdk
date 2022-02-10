@@ -12,7 +12,7 @@ setup(
     long_description_content_type="text/markdown",
     author='Risto Kowaczewski',
     author_email='risto.kowaczewski@gmail.com',
-    packages=['tracardi'],
+    packages=['tracardi_python_sdk'],
     install_requires=[
         'pydantic',
         'aiohttp',

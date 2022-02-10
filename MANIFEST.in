@@ -1,0 +1,2 @@
+recursive-include tracardi-python-sdk/model *
+recursive-include tracardi-python-sdk/service *

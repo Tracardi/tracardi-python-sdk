@@ -10,7 +10,7 @@ class Dispatcher:
     def _error(self, body, status):
 
         if status == 401:
-            raise AuthenticationError("Not authenticated.")
+            raise AuthenticationError("Not authenticated. Server response {}".format(body))
 
         if status == 404:
             raise ResponseError("API endpoint {} does not exist.".format(self.url), status=status)

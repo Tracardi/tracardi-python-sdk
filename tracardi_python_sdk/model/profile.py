@@ -4,6 +4,8 @@ from pydantic import BaseModel
 
 from tracardi_python_sdk.model.entity import Entity
 from tracardi_python_sdk.model.metadata import Metadata
+from tracardi_python_sdk.model.operation import Operation
+from tracardi_python_sdk.model.time import Time
 
 
 class ProfileStats(BaseModel):
@@ -38,10 +40,12 @@ class PII(BaseModel):
 
 class Profile(Entity):
     mergedWith: Optional[str] = None
-    metadata: Metadata
+    metadata: Optional[Metadata] = Metadata(time=Time())
+    operation: Optional[Operation] = Operation()
     stats: ProfileStats = ProfileStats()
     traits: ProfileTraits = ProfileTraits()
     pii: PII = PII()
     segments: Optional[list] = []
+    interests: Optional[dict] = {}
     consents: Optional[dict] = {}
     active: bool = True

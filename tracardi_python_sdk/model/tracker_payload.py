@@ -7,16 +7,21 @@ from pydantic import BaseModel
 from tracardi_python_sdk.model.browser_context import BrowserContext
 from tracardi_python_sdk.model.entity import Entity
 from tracardi_python_sdk.model.event_payload import EventPayload
-from tracardi_python_sdk.model.metadata import Metadata
 from tracardi_python_sdk.model.payload_options import PayloadOptions
 from tracardi_python_sdk.model.time import Time
+
+
+class EventPayloadMetadata(BaseModel):
+    time: Time
+    ip: str = None
+    status: str = None
 
 
 class TrackerPayload(BaseModel):
     source: Entity
     session: Entity = None
 
-    metadata: Optional[Metadata]
+    metadata: Optional[EventPayloadMetadata]
     profile: Optional[Entity] = None
     context: Optional[Union[dict, BrowserContext]] = {}
     properties: Optional[dict] = {}
@@ -24,7 +29,7 @@ class TrackerPayload(BaseModel):
     options: Optional[PayloadOptions] = PayloadOptions()
 
     def __init__(self, **data: Any):
-        data['metadata'] = Metadata(
+        data['metadata'] = EventPayloadMetadata(
             time=Time(
                 insert=datetime.utcnow()
             )

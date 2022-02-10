@@ -25,7 +25,7 @@ class SyncDispatcher(Dispatcher):
         self.token = Token(**response.json())
 
     def send_events(self, payload: TrackerPayload) -> Response:
-        response = requests.post(f"{self.url}/track", json=payload.serialize(), headers={"Authorization": f"Bearer {self.token.access_token}"})
+        response = requests.post(f"{self.url}/track", json=payload.serialize())
         return self._response(response)
 
     def create_resource(self, resource: Resource):

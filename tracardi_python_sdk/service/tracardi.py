@@ -11,16 +11,17 @@ from tracardi_python_sdk.service.sync_dispatcher import SyncDispatcher
 
 class Tracardi:
 
-    def __init__(self, credentials: Credentials, url="http://locahost:8686"):
-        self.credentials = credentials
+    def __init__(self, url="http://locahost:8686"):
+        self.credentials = None
         self.url = url
         self.dispatcher = SyncDispatcher(url)
 
     def is_authorized(self):
         return self.dispatcher.is_authorized()
 
-    def authorize(self):
-        self.dispatcher.authorize(self.credentials)
+    def authorize(self, credentials: Credentials):
+        self.credentials = credentials
+        self.dispatcher.authorize(credentials)
 
     def track(self, payload: TrackerPayload) -> Union[Entity, Profile]:
         response = self.dispatcher.send_events(payload)

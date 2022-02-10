@@ -9,9 +9,9 @@ from tracardi_python_sdk.service.tracardi import Tracardi
 def test_send():
     credentials = Credentials(username="admin", password='admin')
 
-    tracardi = Tracardi(credentials, url="http://localhost:8686")
+    tracardi = Tracardi(url="http://localhost:8686")
     if not tracardi.is_authorized():
-        tracardi.authorize()
+        tracardi.authorize(credentials)
 
     resource = WebPageResource(name="mypage", consent=True)
     resource = tracardi.create_resource(resource)
